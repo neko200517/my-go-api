@@ -8,6 +8,9 @@ workflows:
     jobs:
       - aws-ecr/build_and_push_image:
           account-url: AWS_ECR_ACCOUNT_URL
+          auth:
+            - aws-cli/setup:
+                role_arn: arn:aws:iam::101681942065:user/ci-cd-ecr
           aws-access-key-id: AWS_ACCESS_KEY_ID
           aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true
