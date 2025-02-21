@@ -8,12 +8,11 @@ workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build_and_push_image:
-          account-url: AWS_ECR_ACCOUNT_URL
+          account_id: ${AWS_ACCOUNT_ID}
           auth:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::101681942065
-          aws-access-key-id: AWS_ACCESS_KEY_ID
-          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          context: aws-dev
           create-repo: true
           dockerfile: Dockerfile
           path: .
