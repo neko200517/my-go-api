@@ -24,6 +24,7 @@ workflows:
           auth:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::101681942065:role/circleci-oidc-my-go-api-ecs
+          context: aws-dev
           cluster: my-go-api-cluster
           container_image_name_updates: container=my-go-api,tag=latest
           family: my-go-api-service
