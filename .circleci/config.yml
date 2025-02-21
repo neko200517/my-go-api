@@ -11,7 +11,7 @@ workflows:
           account_id: ${AWS_ACCOUNT_ID}
           auth:
             - aws-cli/setup:
-                role_arn: arn:aws:iam::101681942065
+                role_arn: arn:aws:iam::101681942065:role/circleci-oidc-my-go-api
           context: aws-dev
           create_repo: true
           dockerfile: Dockerfile
