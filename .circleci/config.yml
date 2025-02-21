@@ -1,22 +1,18 @@
 version: 2.1
 
 orbs:
-  aws-ecr: circleci/aws-ecr@8.1.3
+  aws-ecr: circleci/aws-ecr@6.7.0
 
 workflows:
   build_and_push_image:
     jobs:
       - aws-ecr/build-and-push-image:
-          context: aws-dev
+          account-url: AWS_ECR_ACCOUNT_URL
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
           create-repo: true
           dockerfile: Dockerfile
           path: .
-          repo: 'my-go-api'
+          region: AWS_REGION
+          repo: my-go-api
           tag: '$CIRCLE_SHA1'
-      # - aws-ecs/deploy-service-update:
-      #     requires:
-      #       - aws-ecr/build-and-push-image
-      #     family: 'my-go-api-task'
-      #     cluster-name: 'my-go-api-cluster'
-      #     service-name: 'my-go-api-service'
-      #     container-image-name-updates: 'container=my-go-api,tag=${CIRCLE_SHA1}'
