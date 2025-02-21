@@ -25,7 +25,7 @@ workflows:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::101681942065:role/circleci-oidc-my-go-api-ecs
           cluster: my-go-api-cluster
-          container_image_name_updates: container=my-go-api-service,tag=latest
+          container_image_name_updates: container=my-go-api,tag=latest
           family: my-go-api-service
           region: ${AWS_REGION}
           requires:
