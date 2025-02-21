@@ -13,7 +13,7 @@ workflows:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::101681942065
           context: aws-dev
-          create-repo: true
+          create_repo: true
           dockerfile: Dockerfile
           path: .
           region: AWS_REGION
