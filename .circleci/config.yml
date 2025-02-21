@@ -16,6 +16,6 @@ workflows:
           create_repo: true
           dockerfile: Dockerfile
           path: .
-          region: AWS_REGION
+          region: ${AWS_REGION}
           repo: my-go-api
-          tag: '$CIRCLE_SHA1'
+          tag: '${CIRCLE_SHA1}'
