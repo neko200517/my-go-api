@@ -31,8 +31,8 @@ func main() {
 			},
 		}))
 
-    // GET /hello -> {"message": "Hello World"} を返す
-    r.GET("/hello", func(c *gin.Context) {
+    // GET
+    r.GET("/", func(c *gin.Context) {
         c.JSON(200, gin.H{"message": "Hello World"})
     })
 
