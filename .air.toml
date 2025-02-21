@@ -1,0 +1,22 @@
+# Config file for Air (github.com/air-verse/air)
+
+# ウォッチ対象のディレクトリ
+root = "."
+
+# ビルドが必要なファイルの拡張子
+include_ext = ["go", "tpl", "tmpl", "html"]
+
+# 除外するディレクトリ
+exclude_dir = ["tmp", "vendor"]
+
+# コンパイル後に実行するコマンド
+cmd = "go run main.go"
+
+# 設定を反映するファイル変更イベント
+delay = "100ms"
+
+# ログの色を有効化
+color = "true"
+
+# ログの時刻を表示
+timestamp = "true"
