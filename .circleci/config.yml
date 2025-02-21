@@ -14,7 +14,6 @@ workflows:
             - aws-cli/setup:
                 role_arn: arn:aws:iam::101681942065:role/circleci-oidc-my-go-api
           context: aws-dev
-          create_repo: false
           dockerfile: Dockerfile
           path: .
           region: ${AWS_REGION}
@@ -27,7 +26,8 @@ workflows:
           context: aws-dev
           cluster: my-go-api-cluster
           container_image_name_updates: container=my-go-api,tag=latest
-          family: my-go-api-service
+          family: my-go-api-task
+          service_name: my-go-api-service
           region: ${AWS_REGION}
           requires:
             - aws-ecr/build_and_push_image
