@@ -11,20 +11,20 @@ workflows:
       - aws-ecr/build_and_push_image:
           auth:
             - aws-cli/setup:
-                role_arn: arn:aws:iam::101681942065:role/circleci-oidc-role-my-go-api-ecr
+                role_arn: ${AWS_ECR_ROLE_ARN}
           context: aws-dev
           dockerfile: Dockerfile
           path: .
           repo: my-go-api
           tag: 'latest'
-      # - aws-ecs/deploy_service_update:
-      #     auth:
-      #       - aws-cli/setup:
-      #           role_arn: arn:aws:iam::101681942065:role/circleci-oidc-role-my-go-api-ecs
-      #     context: aws-dev
-      #     cluster: my-go-api-cluster
-      #     service_name: my-go-api-service
-      #     family: my-go-api-task
-      #     container_image_name_updates: container=my-go-api,tag=latest
-      #     requires:
-      #       - aws-ecr/build_and_push_image
+      - aws-ecs/deploy_service_update:
+          auth:
+            - aws-cli/setup:
+                role_arn: ${AWS_ECS_ROLE_ARN}
+          context: aws-dev
+          cluster: my-go-api-cluster
+          service_name: my-go-api-service
+          family: my-go-api-task
+          container_image_name_updates: container=my-go-api,tag=latest
+          requires:
+            - aws-ecr/build_and_push_image
