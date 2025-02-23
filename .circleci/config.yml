@@ -15,16 +15,16 @@ workflows:
           context: aws-dev
           dockerfile: Dockerfile
           path: .
-          repo: my-go-api
+          repo: '${PROJECT_NAME}-ecr'
           tag: 'latest'
       - aws-ecs/deploy_service_update:
           auth:
             - aws-cli/setup:
                 role_arn: ${AWS_ECS_ROLE_ARN}
           context: aws-dev
-          cluster: my-go-api-cluster
-          service_name: my-go-api-service
-          family: my-go-api-task
-          container_image_name_updates: container=my-go-api,tag=latest
+          cluster: ${PROJECT_NAME}-cluster
+          service_name: ${PROJECT_NAME}-service
+          family: ${PROJECT_NAME}-task
+          container_image_name_updates: container=${PROJECT_NAME}-container,tag=latest
           requires:
             - aws-ecr/build_and_push_image
