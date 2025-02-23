@@ -34,7 +34,7 @@ func main() {
 
 	// GET
 	r.GET("/", func(c *gin.Context) {
-		c.JSON(200, gin.H{"message": "Hello Go Lang!!"})
+		c.JSON(200, gin.H{"message": "Hello World!!"})
 	})
 
 	// 8080ポートでサーバー起動
